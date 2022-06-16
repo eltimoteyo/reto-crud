@@ -15,15 +15,39 @@ import { IUserCrud } from '../interfaces/user-crud.interface';
 export class RetoCrudService {
   constructor(public http: HttpClient) {}
 
-  getList(page: number = 1): Observable<IRetoCrudResponse> {
+  getList(): Observable<IUserCrud[]> {
+    let headers = new HttpHeaders().set('Type-content', 'aplication/json');
+    const url = `${environment.urlReto}`;
+    return this.http.get<IUserCrud[]>(url, { headers: headers });
+  }
+
+  getListPaginado(page: number = 1): Observable<IRetoCrudResponse> {
     let headers = new HttpHeaders().set('Type-content', 'aplication/json');
     const url = `${environment.url}?page=${page}`;
     return this.http.get<IRetoCrudResponse>(url, { headers: headers });
   }
 
   sendUser(request: IUserCrud): Observable<IUserCrud> {
-    const url = `${environment.url}}`;
+    const url = `${environment.urlReto}`;
     return this.http.post<IUserCrud>(url, request).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
+
+  deleteUser(id: number): Observable<IUserCrud> {
+    const url = `${environment.urlReto}/${id}`;
+    return this.http.delete<IUserCrud>(url).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
+
+  getUser(id: number): Observable<IUserCrud> {
+    const url = `${environment.urlReto}/${id}`;
+    return this.http.get<IUserCrud>(url).pipe(
       map((response) => {
         // const resp: IUserCrud = {
         //   id_ticket: response.id

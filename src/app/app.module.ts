@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DefaultComponent } from './default/default.component';
+import { ListaPaginadaComponent } from './lista-paginada/lista-paginada.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -18,6 +19,7 @@ import { DefaultComponent } from './default/default.component';
     NewCrudComponent,
     ListCrudComponent,
     DefaultComponent,
+    ListaPaginadaComponent,
   ],
   imports: [
     BrowserModule,

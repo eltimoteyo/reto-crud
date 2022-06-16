@@ -17,4 +17,7 @@ export class AppComponent {
     console.log('nuevo');
     this.router.navigateByUrl('/listar-registros');
   }
+  listarPaginado() {
+    this.router.navigateByUrl('/listar-paginado');
+  }
 }

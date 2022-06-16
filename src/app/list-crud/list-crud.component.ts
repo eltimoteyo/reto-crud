@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { IRetoCrudResponse } from '../commons/interfaces/reto-crud.interface';
+import { IUserCrud } from '../commons/interfaces/user-crud.interface';
 import { IUser } from '../commons/interfaces/user.interface';
 import { RetoCrudService } from '../commons/services/reto-crud.service';
 
@@ -9,19 +11,22 @@ import { RetoCrudService } from '../commons/services/reto-crud.service';
   styleUrls: ['./list-crud.component.scss'],
 })
 export class ListCrudComponent implements OnInit {
-  users: IUser[] = [];
+  users: IUserCrud[] = [];
   crudResponse!: IRetoCrudResponse;
+  @Output() userSelect = new EventEmitter<IUserCrud>();
 
-  constructor(private retoCrudService: RetoCrudService) {}
+  constructor(
+    private router: Router,
+    private retoCrudService: RetoCrudService
+  ) {}
 
   ngOnInit(): void {
-    this.getListCrud(1);
+    this.getListCrud();
   }
 
-  getListCrud(page: number) {
-    this.retoCrudService.getList(page).subscribe((rest: IRetoCrudResponse) => {
-      this.crudResponse = rest;
-      this.users = rest.data;
+  getListCrud() {
+    this.retoCrudService.getList().subscribe((rest: IUserCrud[]) => {
+      this.users = rest;
       console.log(this.users);
     });
   }
@@ -30,5 +35,20 @@ export class ListCrudComponent implements OnInit {
     let miarray = new Array(i);
     console.log(miarray);
     return miarray;
+  }
+  edit(user: IUserCrud) {
+    console.log(user);
+    const url = '/nuevo-regostro?id=' + user.id;
+    this.router.navigateByUrl(url);
+    // this.router.navigate(['/nuevo-regostro'], {
+    //   queryParams: { id: user.id },
+    // });
+  }
+
+  delete(id: number) {
+    this.retoCrudService.deleteUser(id).subscribe((rest) => {
+      alert('se elimino el registro: ' + rest);
+      this.getListCrud();
+    });
   }
 }

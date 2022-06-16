@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { IUserCrud } from '../commons/interfaces/user-crud.interface';
 import { RetoCrudService } from '../commons/services/reto-crud.service';
 import { NewCrudPresenter } from './new-crud.presenter';
@@ -16,12 +17,34 @@ export interface PeriodicElement {
   providers: [NewCrudPresenter],
 })
 export class NewCrudComponent implements OnInit {
+  userUpdate: any;
+  user!: IUserCrud;
   constructor(
     public newCrudPresenter: NewCrudPresenter,
-    private retoCrudService: RetoCrudService
+    private retoCrudService: RetoCrudService,
+    private route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params: Params) => {
+      this.userUpdate = params;
+      if (this.userUpdate.id) {
+        this.cargarUserUpdate();
+      }
+    });
+  }
+
+  cargarUserUpdate() {
+    if (this.userUpdate) {
+      this.retoCrudService
+        .getUser(this.userUpdate.id)
+        .subscribe((user: IUserCrud) => {
+          this.user = user;
+          this.newCrudPresenter.setValues(this.user);
+          console.log('getuser', this.user);
+        });
+    }
+  }
 
   save() {
     const resquest: IUserCrud = {

@@ -6,6 +6,7 @@
       <span>Reto Crud</span>
       <span class="example-spacer"></span>
       <mat-button-toggle-group name="fontStyle" aria-label="Font Style" style="font-size: 14px;">
+        <mat-button-toggle value="listarPaginado" (click)="listarPaginado()">Listar Paginada</mat-button-toggle>
         <mat-button-toggle value="listar" (click)="listItem()">Listar Crud</mat-button-toggle>
         <mat-button-toggle value="nuevo" (click)="newItem()">Nuevo Crud</mat-button-toggle>
       </mat-button-toggle-group>
