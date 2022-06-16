@@ -1,0 +1,50 @@
+<div class="new-crud-containeer">
+    <mat-card>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                <h4>Ingresar datos de usuario</h4>
+                <form [formGroup]="newCrudPresenter.form">
+                <div class="row">
+                  <div class="col-md-5">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Ingrese su nombre</mat-label>
+                      <input matInput type="text" placeholder="nombre" formControlName="nombre">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-5">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Igrese su apellido</mat-label>
+                      <input matInput type="text" placeholder="Apellido" formControlName="apellidos">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-5">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Igrese correo electronico</mat-label>
+                      <input matInput type="email" placeholder="Correo" formControlName="email">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-5">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Igresar url de avatar</mat-label>
+                      <input matInput placeholder="Avatar" formControlName="avatar">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-5">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Igresar numero de telefono</mat-label>
+                      <input matInput placeholder="Telefono" formControlName="teleefono">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-12">
+                    <button mat-stroked-button style="margin-right: 10px;">Cancelar</button>
+                    <button mat-stroked-button color="primary" (click)="save()">Guardar</button>
+                  </div>
+                </div>
+              </form>
+                </div>
+            </div>
+        </div>
+     </mat-card>
+    
+</div>
