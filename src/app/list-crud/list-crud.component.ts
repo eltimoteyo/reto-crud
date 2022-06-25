@@ -1,9 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { IRetoCrudResponse } from '../commons/interfaces/reto-crud.interface';
-import { IUserCrud } from '../commons/interfaces/user-crud.interface';
-import { IUser } from '../commons/interfaces/user.interface';
-import { RetoCrudService } from '../commons/services/reto-crud.service';
+import { IAlumno } from '../commons/interfaces/user-crud.interface';
+import { AlumnoCrudService } from '../commons/services/alumno-crud.service';
+import { AddNotasComponent } from './add-notas/add-notas.component';
 
 @Component({
   selector: 'app-list-crud',
@@ -11,13 +11,13 @@ import { RetoCrudService } from '../commons/services/reto-crud.service';
   styleUrls: ['./list-crud.component.scss'],
 })
 export class ListCrudComponent implements OnInit {
-  users: IUserCrud[] = [];
-  crudResponse!: IRetoCrudResponse;
-  @Output() userSelect = new EventEmitter<IUserCrud>();
+  alumnos: IAlumno[] = [];
+  @Output() alumnoSelect = new EventEmitter<IAlumno>();
 
   constructor(
     private router: Router,
-    private retoCrudService: RetoCrudService
+    private alumnoCrudService: AlumnoCrudService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -25,9 +25,9 @@ export class ListCrudComponent implements OnInit {
   }
 
   getListCrud() {
-    this.retoCrudService.getList().subscribe((rest: IUserCrud[]) => {
-      this.users = rest;
-      console.log(this.users);
+    this.alumnoCrudService.getList().subscribe((rest: IAlumno[]) => {
+      this.alumnos = rest;
+      console.log(this.alumnos);
     });
   }
   counterPages(i: number) {
@@ -36,19 +36,28 @@ export class ListCrudComponent implements OnInit {
     console.log(miarray);
     return miarray;
   }
-  edit(user: IUserCrud) {
-    console.log(user);
-    const url = '/nuevo-regostro?id=' + user.id;
+  edit(alumno: IAlumno) {
+    console.log(alumno);
+    const url = '/nuevo-regostro?id=' + alumno.alumnoId;
     this.router.navigateByUrl(url);
-    // this.router.navigate(['/nuevo-regostro'], {
-    //   queryParams: { id: user.id },
-    // });
   }
 
-  delete(id: number) {
-    this.retoCrudService.deleteUser(id).subscribe((rest) => {
+  delete(id: string) {
+    this.alumnoCrudService.deleteAlumno(id).subscribe((rest) => {
       alert('se elimino el registro: ' + rest);
       this.getListCrud();
+    });
+  }
+
+  addNotas(alumno: IAlumno) {
+    const dialogRef = this.dialog.open(AddNotasComponent, {
+      width: '720px',
+      data: alumno,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      //this.animal = result;
+      console.log('The dialog was closed', result);
     });
   }
 }

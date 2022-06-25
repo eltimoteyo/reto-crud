@@ -7,25 +7,23 @@
                 <div class="table-responsive">
                   <table id="mytable" class="table table-bordred">
                     <thead>
-                       <th>Avatar</th>
-                        <th>Nombre</th>
+                       <th>Nombre</th>
                         <th>Apellidos</th>
-                         <th>Email</th>
+                        <th>Fecha Nacimiento</th>
+                         <th>Sexo</th>
+                        <th></th>
                         <th></th>
                         <th></th>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let user of users; let i=index;">
-                      <td>
-                        <div mat-card-avatar class="example-header-image">
-                          <img mat-card-avatar [src]="user.avatar" alt="avatar">
-                        </div>
-                      </td>
-                      <td>{{user.nombre}}</td>
-                      <td>{{user.apellidos}}</td>
-                      <td>{{user.email}}</td>
-                      <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button mat-button color="primary" (click)="edit(user)">Editar</button></p></td>
-                      <td><p data-placement="top" data-toggle="tooltip" title="Delete" *ngIf="user.id"><button mat-button color="accent" (click)="delete(user.id)">Eliminar</button></p></td>
+                    <tr *ngFor="let alumno of alumnos; let i=index;">
+                      <td>{{alumno.nombre}}</td>
+                      <td>{{alumno.apellidos}}</td>
+                      <td>{{alumno.fechaNacimiento}}</td>
+                      <td>{{alumno.sexo}}</td>
+                      <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button mat-button color="primary" (click)="edit(alumno)">Editar</button></p></td>
+                      <td><p data-placement="top" data-toggle="tooltip" title="Delete" *ngIf="alumno.alumnoId"><button mat-button color="accent" (click)="delete(alumno.alumnoId)">Eliminar</button></p></td>
+                      <td><p data-placement="top" data-toggle="tooltip" title="add notas" *ngIf="alumno.alumnoId"><button mat-button color="accent" (click)="addNotas(alumno)">Ingresar Notas</button></p></td>
                     </tr>
                     </tbody>
                 </table>

@@ -11,6 +11,8 @@ import { APP_ROUTES } from './app.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DefaultComponent } from './default/default.component';
 import { ListaPaginadaComponent } from './lista-paginada/lista-paginada.component';
+import { NewCursoComponent } from './new-curso/new-curso.component';
+import { AddNotasComponent } from './list-crud/add-notas/add-notas.component';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -20,6 +22,8 @@ import { ListaPaginadaComponent } from './lista-paginada/lista-paginada.componen
     ListCrudComponent,
     DefaultComponent,
     ListaPaginadaComponent,
+    NewCursoComponent,
+    AddNotasComponent,
   ],
   imports: [
     BrowserModule,

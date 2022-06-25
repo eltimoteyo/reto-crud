@@ -20,20 +20,21 @@
                   </div>
                   <div class="col-md-5">
                     <mat-form-field appearance="fill">
-                      <mat-label>Igrese correo electronico</mat-label>
-                      <input matInput type="email" placeholder="Correo" formControlName="email">
+                      <mat-label>Fecha de nacimiento</mat-label>
+                      <!-- <input matInput type="email" placeholder="Correo" formControlName="email"> -->
+                      <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
                   </div>
                   <div class="col-md-5">
                     <mat-form-field appearance="fill">
-                      <mat-label>Igresar url de avatar</mat-label>
-                      <input matInput placeholder="Avatar" formControlName="avatar">
-                    </mat-form-field>
-                  </div>
-                  <div class="col-md-5">
-                    <mat-form-field appearance="fill">
-                      <mat-label>Igresar numero de telefono</mat-label>
-                      <input matInput placeholder="Telefono" formControlName="teleefono">
+                      <mat-label>Sexo</mat-label>
+                      <!-- <input matInput placeholder="Avatar" formControlName="avatar"> -->
+                      <mat-select formControlName="sexo" name="sexo">
+                        <mat-option value="Masculino">Masculino</mat-option>
+                        <mat-option value="Femenino">Femenino</mat-option>
+                      </mat-select>
                     </mat-form-field>
                   </div>
                   <div class="col-md-12">

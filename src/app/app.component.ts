@@ -20,4 +20,7 @@ export class AppComponent {
   listarPaginado() {
     this.router.navigateByUrl('/listar-paginado');
   }
+  newCurso() {
+    this.router.navigateByUrl('/nuevo-curso');
+  }
 }

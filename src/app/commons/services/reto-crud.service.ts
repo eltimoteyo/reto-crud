@@ -36,6 +36,15 @@ export class RetoCrudService {
     );
   }
 
+  updateUser(request: IUserCrud): Observable<IUserCrud> {
+    const url = `${environment.urlReto}/${request.id}`;
+    return this.http.put<IUserCrud>(url, request).pipe(
+      map((response) => {
+        return response;
+      })
+    );
+  }
+
   deleteUser(id: number): Observable<IUserCrud> {
     const url = `${environment.urlReto}/${id}`;
     return this.http.delete<IUserCrud>(url).pipe(

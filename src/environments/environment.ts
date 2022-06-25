@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   url: 'https://reqres.in/api/users',
-  urlReto: 'http://localhost:5281/users',
+  urlReto: 'https://api-reto-tec.herokuapp.com/api',
 };
 
 /*

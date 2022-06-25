@@ -3,6 +3,7 @@ import { DefaultComponent } from './default/default.component';
 import { ListCrudComponent } from './list-crud/list-crud.component';
 import { ListaPaginadaComponent } from './lista-paginada/lista-paginada.component';
 import { NewCrudComponent } from './new-crud/new-crud.component';
+import { NewCursoComponent } from './new-curso/new-curso.component';
 
 const appRoutes: Routes = [
   {
@@ -16,6 +17,10 @@ const appRoutes: Routes = [
   {
     path: 'listar-paginado',
     component: ListaPaginadaComponent,
+  },
+  {
+    path: 'nuevo-curso',
+    component: NewCursoComponent,
   },
   {
     path: '**',

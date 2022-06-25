@@ -1,0 +1,61 @@
+<div class="new-crud-containeer">
+    <mat-card>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                <h4>Ingresar Notas</h4>
+                <form [formGroup]="addNotasPresenter.form">
+                <div class="row">
+                  <div class="col-md-5">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Curso</mat-label>
+                      <mat-select formControlName="curso" name="sexo">
+                        <mat-option *ngFor="let curso of cursos" [value]="curso">{{ curso.nombre }}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-5">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Alumno</mat-label>
+                      <mat-select formControlName="alumno" name="alumno">
+                        <mat-option *ngFor="let alumno of alumnos" [value]="alumno">{{ alumno.nombre }}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-5">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Nota Practicas</mat-label>
+                      <input matInput type="number" placeholder="practicas" formControlName="prtacticas">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-5">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Nota Parcial</mat-label>
+                      <input (blur)="onblur()" matInput type="number" placeholder="parcial" formControlName="parcial">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-5">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Nota Final</mat-label>
+                      <input (blur)="onblur()" matInput type="number" placeholder="final" formControlName="final">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-5">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Promedio</mat-label>
+                      <input (blur)="onblur()" matInput type="number" placeholder="promedio" formControlName="promedio">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-12">
+                    <button mat-stroked-button style="margin-right: 10px;">Cancelar</button>
+                    <button mat-stroked-button color="primary" (click)="save()">Guardar</button>
+                  </div>
+                </div>
+              </form>
+                </div>
+            </div>
+        </div>
+     </mat-card>
+    
+</div>
+

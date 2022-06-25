@@ -1,0 +1,39 @@
+<div class="new-crud-containeer">
+    <mat-card>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                <h4>Ingresar datos de usuario</h4>
+                <form [formGroup]="newCursoPresenter.form">
+                <div class="row">
+                  <div class="col-md-5">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Ingrese su nombre</mat-label>
+                      <input matInput type="text" placeholder="nombre" formControlName="nombre">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-5">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Igrese descripcion</mat-label>
+                      <input matInput type="text" placeholder="Descripcion" formControlName="descripcion">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-5">
+                      <!-- <mat-label>Fecha de nacimiento</mat-label> -->
+                      <div style="width:50%; padding: 15px 0;">
+                        <mat-checkbox class="example-margin" formControlName="obligatorio">Es obligatorio</mat-checkbox>
+                      </div>
+                      
+                  </div>
+                  <div class="col-md-12">
+                    <button mat-stroked-button style="margin-right: 10px;">Cancelar</button>
+                    <button mat-stroked-button color="primary" (click)="save()">Guardar</button>
+                  </div>
+                </div>
+              </form>
+                </div>
+            </div>
+        </div>
+     </mat-card>
+    
+</div>
